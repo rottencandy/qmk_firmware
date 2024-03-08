@@ -70,9 +70,6 @@ void print_status_narrow(void) {
         case 0:
             oled_write_ln_P(PSTR("Qwrt"), false);
             break;
-        case 1:
-            oled_write_ln_P(PSTR("Clmk"), false);
-            break;
         default:
             oled_write_P(PSTR("Mod\n"), false);
             break;
@@ -81,8 +78,10 @@ void print_status_narrow(void) {
     oled_write_ln_P(PSTR("LAYER"), false);
     switch (get_highest_layer(layer_state)) {
         case 0:
-        case 1:
             oled_write_P(PSTR("Base\n"), false);
+            break;
+        case 1:
+            oled_write_P(PSTR("Lower"), false);
             break;
         case 2:
             oled_write_P(PSTR("Raise"), false);
