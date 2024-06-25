@@ -32,7 +32,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TERM 190
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5
 #define PERMISSIVE_HOLD
-// #define RETRO_TAPPING
 
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_EFFECT_BREATHING
