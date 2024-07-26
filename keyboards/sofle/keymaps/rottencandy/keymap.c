@@ -58,11 +58,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
      _______, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     _______, KC_GRV,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_PGUP, XXXXXXX, XXXXXXX, KC_HOME, KC_END,  _______,
+     _______, KC_GRV,  S(KC_GRV),XXXXXXX,XXXXXXX, XXXXXXX,                      KC_PGUP, XXXXXXX, XXXXXXX, KC_HOME, KC_END,  _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      _______, KC_TAB,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_BSPC, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     _______, S(KC_TAB), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   _______, _______,KC_PGDN, KC_QUOT, S(KC_QUOT), KC_INS, KC_DEL, _______,
+     _______, S(KC_TAB), XXXXXXX,XXXXXXX,XXXXXXX, XXXXXXX,     _______, _______,KC_PGDN, KC_QUOT, S(KC_QUOT), KC_INS, KC_DEL, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
               _______, _______, _______, MO(_ADJUST), _______,                  _______, _______, _______,  _______, _______
 ),
@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, KC_CAPS,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F11,  XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     XXXXXXX, TG(4),   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   _______, _______,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F12,  XXXXXXX,
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   _______, _______,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F12,  XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
               _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______
   )
