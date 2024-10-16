@@ -14,10 +14,11 @@
 
 enum sofle_layers {
     /* _M_XYZ = Mac Os, _W_XYZ = Win/Linux */
-    _QWERTY,
+    _BASE,
     _LOWER,
     _RAISE,
-    _ADJUST,
+    _ADJST,
+    _GAME,
 };
 
 enum custom_keycodes {
@@ -25,11 +26,11 @@ enum custom_keycodes {
     KC_PRVWD,
     KC_NXTWD,
     KC_LSTRT,
-    KC_LEND
+    KC_LEND,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-[_QWERTY] = LAYOUT(
+[_BASE] = LAYOUT(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
      KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,   KC_0,     KC_MINS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -37,9 +38,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     KC_LSFT, KC_Z,    HOME_X,  KC_C,    KC_V,    KC_B,    KC_MUTE,    XXXXXXX, KC_N,    KC_M,    KC_COMM, HOME_DOT,KC_SLSH, KC_RSFT,
+     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_MUTE,    XXXXXXX, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-              XXXXXXX, XXXXXXX, HOME_ENT,MO(_LOWER),HOME_CT,                    KC_RSFT, MO(_RAISE), HOME_SPC, XXXXXXX, XXXXXXX
+              KC_LALT, _______, HOME_ENT,MO(_LOWER),HOME_CT,                    KC_RSFT, MO(_RAISE), HOME_SPC, _______, KC_LALT
 ),
 
 [_LOWER] = LAYOUT(
@@ -52,39 +53,73 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      _______, KC_EQL,  KC_MINS, S(KC_EQL), S(KC_MINS),S(KC_BSLS),_______,_______,KC_LBRC,KC_RBRC,S(KC_LBRC),S(KC_RBRC),KC_BSLS,_______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-              _______, _______, _______, _______, _______,                      _______, MO(_ADJUST), _______, _______, _______
+              _______, _______, _______, _______, _______,                      _______, MO(_ADJST), _______, _______, _______
 ),
+
 [_RAISE] = LAYOUT(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
      _______, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     _______, KC_GRV,  S(KC_GRV),XXXXXXX,XXXXXXX, XXXXXXX,                      KC_PGUP, XXXXXXX, XXXXXXX, KC_HOME, KC_END,  _______,
+     _______, KC_GRV,  S(KC_GRV),_______,_______, _______,                      KC_PGUP, _______, _______, KC_HOME, KC_END,  _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     _______, KC_TAB,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_BSPC, _______,
+     _______, KC_TAB,  _______, _______, _______, _______,                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_BSPC, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     _______, S(KC_TAB), XXXXXXX,XXXXXXX,XXXXXXX, XXXXXXX,     _______, _______,KC_PGDN, KC_QUOT, S(KC_QUOT), KC_INS, KC_DEL, _______,
+     _______, S(KC_TAB), _______,_______,_______, _______,   _______, _______,  KC_PGDN, KC_QUOT, S(KC_QUOT), KC_INS, KC_DEL, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-              _______, _______, _______, MO(_ADJUST), _______,                  _______, _______, _______,  _______, _______
+              _______, _______, _______, MO(_ADJST),_______,                   _______, _______, _______,  _______, _______
 ),
-  [_ADJUST] = LAYOUT(
+
+  [_ADJST] = LAYOUT(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
      _______, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX,
+     _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, KC_CAPS,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F11,  XXXXXXX,
+     _______, KC_MUTE, KC_VOLD, KC_VOLU, _______, KC_CAPS,                      MS_LEFT, MS_DOWN, MS_UP,   MS_RGHT, KC_F11,  _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   _______, _______,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F12,  XXXXXXX,
+     _______, _______, _______, _______, _______, TO(_GAME), _______, _______,  MS_BTN1, MS_BTN2, _______, _______, KC_F12,  _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
               _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______
-  )
+  ),
+
+  [_GAME] = LAYOUT(
+  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+     _______, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+     _______, _______, _______, _______, _______, _______,                      _______, _______, KC_UP,   _______, _______, _______,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+     _______, _______, _______, _______, _______, _______,                      _______, KC_LEFT, KC_DOWN, KC_RIGHT,_______,  _______,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+     _______, _______, _______, _______, _______, _______,   _______, _______,  _______, _______, _______, _______, _______,  _______,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+              _______, _______, _______, TO(_BASE),_______,                     _______,TO(_BASE),_______, _______, _______
+  ),
+};
+
+const uint16_t PROGMEM combo_xc[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM combo_zx[] = {KC_Z, KC_X, COMBO_END};
+const uint16_t PROGMEM combo_fg[] = {KC_F, KC_G, COMBO_END};
+
+const uint16_t PROGMEM combo_comdot[] = {KC_COMM, KC_DOT, COMBO_END};
+const uint16_t PROGMEM combo_dotslash[] = {KC_DOT, KC_SLSH, COMBO_END};
+const uint16_t PROGMEM combo_hj[] = {KC_H, KC_J, COMBO_END};
+
+combo_t key_combos[] = {
+    COMBO(combo_xc, KC_LALT),
+    COMBO(combo_comdot, KC_LALT),
+
+    COMBO(combo_zx, KC_LSFT),
+    COMBO(combo_dotslash, KC_RSFT),
+
+    COMBO(combo_fg, KC_LCTL),
+    COMBO(combo_hj, KC_RCTL),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case KC_QWERTY:
             if (record->event.pressed) {
-                set_single_persistent_default_layer(_QWERTY);
+                set_single_persistent_default_layer(_BASE);
             }
             return false;
         case KC_PRVWD:
@@ -165,59 +200,53 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-#ifdef OLED_DRIVER_ENABLE
-
-    oled_write_P(qmk_logo, false);
-}
-*/
+#ifdef OLED_ENABLE
 
 static void print_status_narrow(void) {
     // Print current mode
-    oled_write_P(PSTR("\n\n"), false);
+    oled_write_P(PSTR("\n"), false);
     oled_write_ln_P(PSTR("MODE"), false);
-    oled_write_ln_P(PSTR(""), false);
+    oled_write_ln_P(PSTR("----"), false);
     if (keymap_config.swap_lctl_lgui) {
         oled_write_ln_P(PSTR("MAC"), false);
     } else {
-        oled_write_ln_P(PSTR("WIN"), false);
+        oled_write_ln_P(PSTR("LNX"), false);
     }
 
     switch (get_highest_layer(default_layer_state)) {
-        case _QWERTY:
+        case _BASE:
             oled_write_ln_P(PSTR("Qwrt"), false);
-            break;
-        case _COLEMAK:
-            oled_write_ln_P(PSTR("Clmk"), false);
             break;
         default:
             oled_write_P(PSTR("Undef"), false);
     }
     oled_write_P(PSTR("\n\n"), false);
     // Print current layer
-    oled_write_ln_P(PSTR("LAYER"), false);
+    oled_write_ln_P(PSTR("LYR"), false);
+    oled_write_ln_P(PSTR("----"), false);
     switch (get_highest_layer(layer_state)) {
-        case _COLEMAK:
-        case _QWERTY:
-            oled_write_P(PSTR("Base\n"), false);
+        case _BASE:
+            oled_write_P(PSTR("base"), false);
             break;
         case _RAISE:
-            oled_write_P(PSTR("Raise"), false);
+            oled_write_P(PSTR("uppr"), false);
             break;
         case _LOWER:
-            oled_write_P(PSTR("Lower"), false);
+            oled_write_P(PSTR("lowr"), false);
             break;
-        case _ADJUST:
-            oled_write_P(PSTR("Adj\n"), false);
+        case _ADJST:
+            oled_write_P(PSTR("adjs"), false);
             break;
-        case _MOUSE:
-            oled_write_P(PSTR("Mouse\n"), false);
+        case _GAME:
+            oled_write_P(PSTR("game"), false);
             break;
         default:
-            oled_write_ln_P(PSTR("Undef"), false);
+            oled_write_ln_P(PSTR("undf"), false);
     }
     oled_write_P(PSTR("\n\n"), false);
+    oled_write_ln_P(PSTR("----"), false);
     led_t led_usb_state = host_keyboard_led_state();
-    oled_write_ln_P(PSTR("CPSLK"), led_usb_state.caps_lock);
+    oled_write_ln_P(PSTR("CAPS"), led_usb_state.caps_lock);
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
@@ -362,7 +391,9 @@ static void render_anim(void) {
     }
 }
 
-void oled_task_user(void) {
+char wpm_str[10];
+
+bool oled_task_user(void) {
     if (is_keyboard_master()) {
         print_status_narrow();
     } else {
@@ -371,6 +402,7 @@ void oled_task_user(void) {
         sprintf(wpm_str, "WPM\n%03d", get_current_wpm());
         oled_write(wpm_str, false);
     }
+    return false;
 }
 
 #endif
